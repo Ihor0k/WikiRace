@@ -1,0 +1,94 @@
+#header {
+    color: #fff;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #5a5a5a;
+    display: flex;
+}
+
+#logo {
+    margin: auto;
+}
+
+#surrender-wrapper {
+    margin: auto;
+}
+
+#game-info {
+    margin: auto;
+    flex: 1;
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#clicks-count-wrapper {
+    flex: 1;
+}
+
+.right {
+    float: right;
+}
+
+#goal, #clicks-count {
+    font-size: 20px;
+}
+
+#popup {
+    background-color: #5a5a5a;
+    font-size: 16px;
+    display: none;
+    position: absolute;
+    width: 20%;
+    word-wrap: break-word;
+    height: auto;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    z-index: 1;
+}
+
+#authorization {
+    margin: auto;
+}
+
+.button {
+    border-radius: 25px;
+    background-color: #fed766;
+    padding: 5px 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #fede81;
+}
+
+#wiki-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    bottom: 0;
+}
+
+#wiki {
+    border-style: none;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    font-weight: normal;
+    color: #2ab7ca;
+    text-decoration: none;
+}
+
+a:not(.button):hover {
+    text-decoration: underline;
+}
+
+body {
+    margin: 0;
+    position: relative;
+}
