@@ -9,11 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <spring.version>4.3.4.RELEASE</spring.version>
-        <logback.version>1.1.7</logback.version>
-        <jcl.slf4j.version>1.7.21</jcl.slf4j.version>
-        <jsoup.version>1.9.2</jsoup.version>
-        <json-simple.version>1.1.1</json-simple.version>
+        <spring.version>4.3.5.RELEASE</spring.version>
+        <spring-security.version>4.2.1.RELEASE</spring-security.version>
     </properties>
 
     <dependencies>
@@ -32,9 +29,48 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!--Spring Security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <!--Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.2.6.Final</version>
+        </dependency>
+
+        <!--MySQL-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.5</version>
         </dependency>
 
         <!--Servlet-->
@@ -49,27 +85,20 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${jcl.slf4j.version}</version>
+            <version>1.7.21</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <!--Jsoup-->
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
+            <version>1.1.8</version>
         </dependency>
 
         <!--Json Simple-->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>${json-simple.version}</version>
+            <version>1.1.1</version>
         </dependency>
 
         <!--JSTL-->

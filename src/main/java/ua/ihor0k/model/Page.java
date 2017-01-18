@@ -1,19 +1,37 @@
-package ua.ihor0k.game.model;
+package ua.ihor0k.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "pages")
 public class Page {
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "title", nullable = false)
     private String title;
+
+    @Column(name = "url", nullable = false)
     private String url;
+
+    @Column(name = "page_name", nullable = false)
     private String pageName;
+
+    @Transient
     private String html;
+
+    @Column(name = "description", nullable = false)
     private String description;
 
     public Page(String title, String url, String pageName) {

@@ -1,4 +1,4 @@
-package ua.ihor0k.game.api;
+package ua.ihor0k.api;
 
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.ihor0k.game.model.Page;
+import ua.ihor0k.model.Page;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;

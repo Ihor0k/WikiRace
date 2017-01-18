@@ -5,7 +5,7 @@
     <title>Title</title>
     <style type="text/css">
         .page-title:not(:last-child):after {
-            content: ' ->';
+            content: ' → ';
         }
     </style>
 </head>

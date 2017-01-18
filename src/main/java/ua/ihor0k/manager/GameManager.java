@@ -1,12 +1,12 @@
-package ua.ihor0k.game.managers;
+package ua.ihor0k.manager;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
-import ua.ihor0k.game.api.ApiWorker;
-import ua.ihor0k.game.model.Game;
-import ua.ihor0k.game.model.Page;
+import ua.ihor0k.api.ApiWorker;
+import ua.ihor0k.model.Game;
+import ua.ihor0k.model.Page;
 
 @Slf4j
 @Service

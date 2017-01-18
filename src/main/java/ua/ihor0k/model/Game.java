@@ -1,23 +1,45 @@
-package ua.ihor0k.game.model;
+package ua.ihor0k.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ua.ihor0k.model.User;
+import ua.ihor0k.util.StringListConverter;
 
+import javax.persistence.*;
 import java.util.LinkedList;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "games")
 public class Game {
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "start_page", nullable = false)
     private Page startPage;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "end_page", nullable = false)
     private Page endPage;
 
+    @Column(name = "pages_list")
+    @Convert(converter = StringListConverter.class)
     private LinkedList<Page> pages = new LinkedList<>();
 
+    @Transient
     private boolean isFinished;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Game(Page startPage, Page endPage) {
         this.startPage = startPage;
