@@ -11,7 +11,6 @@ import ua.ihor0k.model.User;
 import java.util.List;
 
 @Repository
-@Slf4j //TODO logging
 public class GameDAOImpl implements GameDAO {
     private SessionFactory sessionFactory;
 

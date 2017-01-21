@@ -28,8 +28,8 @@ public class User implements UserDetails{
     @Column(name = "password")
     private String password;
 
-    @Column(name = "email")
-    private String email;
+    @Transient
+    private String passwordConfirm;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @OrderBy("id")

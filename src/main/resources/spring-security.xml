@@ -5,13 +5,20 @@
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true"/>
+    <http auto-config="true">
+        <headers>
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
+        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
+                    username-parameter="username" password-parameter="password"/>
+        <logout logout-url="/login?logout"/>
+    </http>
 
-    <authentication-manager>
+    <authentication-manager id="authenticationManager">
         <authentication-provider user-service-ref="userServiceImpl">
-            <password-encoder hash="bcrypt"/>
+            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean id="userServiceImpl" class="ua.ihor0k.service.UserServiceImpl"/>
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans:beans>

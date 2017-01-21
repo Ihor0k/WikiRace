@@ -25,7 +25,7 @@ public class GameManager {
     public void addPage(String pageName) {
         Page page = getPage(pageName);
         game.addPage(page);
-        if (!game.isFinished())
+        if (!game.isFinished() && page.getHtml() == null)
             page.setHtml(apiWorker.getBodyHtml(pageName));
         log.info("Game: {}. Page: {}.", game, page.getTitle());
     }
