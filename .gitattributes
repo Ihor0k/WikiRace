@@ -1,2 +1,1 @@
-special-vendored-path/** linguist-vendored
-wiki.css linguist-vendored=false
+wiki.css linguist-vendored=true
