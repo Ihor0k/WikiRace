@@ -21,11 +21,13 @@
     </c:forEach>
 </div>
 <spring:message code="game.clicks"/>: ${game.pages.size()-1}
+<br/>
 <a href="<c:url value="/game/new"/>">Start new game</a>
 <script type="text/javascript">
-    if (inIframe())
-        window.top.location.href = window.location.href;
-
+    if (inIframe()) {
+        window.top.document.documentElement.innerHTML = window.document.documentElement.innerHTML;
+        alert('true');
+    }
     function inIframe() {
         try {
             return window.self !== window.top;
