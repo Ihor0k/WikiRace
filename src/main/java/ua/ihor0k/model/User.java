@@ -28,9 +28,6 @@ public class User implements UserDetails{
     @Column(name = "password")
     private String password;
 
-    @Transient
-    private String passwordConfirm;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @OrderBy("id")
     private List<Game> games;

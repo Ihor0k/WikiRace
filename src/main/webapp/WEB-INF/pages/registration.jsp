@@ -16,10 +16,6 @@
         <form:input type="password" path="password" placeholder="Password"/>
         <form:errors path="password"/>
     </spring:bind>
-    <spring:bind path="passwordConfirm">
-        <form:input path="passwordConfirm" placeholder="Confirm your password"/>
-        <form:errors path="passwordConfirm"/>
-    </spring:bind>
     <button class="button" type="submit">Submit</button>
 </form:form>
 </body>

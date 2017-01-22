@@ -25,8 +25,6 @@ public class UserValidator implements Validator {
             errors.rejectValue("username", "validation.username.duplicate");
         if (user.getPassword().length() < 6)
             errors.rejectValue("password", "validation.password.size");
-        if (!user.getPassword().equals(user.getPasswordConfirm()))
-            errors.rejectValue("passwordConfirm", "validation.password.diff");
     }
 
     @Autowired
