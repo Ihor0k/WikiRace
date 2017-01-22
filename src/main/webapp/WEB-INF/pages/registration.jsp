@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +17,8 @@
         <form:input type="password" path="password" placeholder="Password"/>
         <form:errors path="password"/>
     </spring:bind>
-    <button class="button" type="submit">Submit</button>
+    <button class="button" type="submit"><spring:message code="auth.signup"/></button>
+    <a href="<c:url value="/login"/>"><spring:message code="auth.login"/></a>
 </form:form>
 </body>
 </html>

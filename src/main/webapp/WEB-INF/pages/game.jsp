@@ -3,7 +3,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>WikiRace</title>
     <spring:url value="/resources/css/main.css" var="stylesheet"/>
     <spring:url value="/resources/js/main.js" var="script"/>
     <link rel="stylesheet" href="${stylesheet}">
@@ -20,22 +20,23 @@
         <div id="temp" style="width: 150px; height: 50px"></div>
     </div>
     <div id="surrender-wrapper">
-        <a class="button" href="${surrender}">Surrender</a>
+        <a class="button" href="${surrender}"><spring:message code="game.surrender"/></a>
     </div>
     <div id="game-info">
         <div id="goal-wrapper">
-            Goal: <a id="goal" href="${endWiki}" target="_blank">${game.endPage.title}</a>
+            <spring:message code="game.page.to"/>: <a id="goal" href="${endWiki}"
+                                                      target="_blank">${game.endPage.title}</a>
             <div id="popup">${game.endPage.description}</div>
         </div>
         <div id="clicks-count-wrapper">
-            <div class="right">Clicks:
+            <div class="right"><spring:message code="game.clicks"/>:
                 <span id="clicks-count">${game.pages.size() <= 1 ? 0 : game.pages.size() - 1}</span>
             </div>
         </div>
     </div>
     <div id="authorization">
-        <a id="sign-up" class="button">Sign Up</a>
-        <a id="log-in" class="button">Log In</a>
+        <a id="sign-up" class="button"><spring:message code="auth.signup"/></a>
+        <a id="log-in" class="button"><spring:message code="auth.login"/></a>
     </div>
 </div>
 <div id="wiki-wrapper">

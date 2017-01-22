@@ -13,8 +13,8 @@
     <input name="password" placeholder="Password" type="password">
     <form:errors path="password"/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <button class="button" type="submit">Log in</button>
-    <a href="<c:url value="/registration"/>">Create an account</a>
+    <button class="button" type="submit"><spring:message code="auth.login"/></button>
+    <a href="<c:url value="/registration"/>"><spring:message code="auth.signup"/></a>
 </form>
 </body>
 </html>

@@ -6,8 +6,8 @@
     <title>Title</title>
 </head>
 <body>
-<div id="from">From: ${game.startPage.title}</div>
-<div id="to">To: ${game.endPage.title}</div>
-<a href="<c:url value="/game"/>">Start game</a>
+<div id="from"><spring:message code="game.page.from"/>: ${game.startPage.title}</div>
+<div id="to"><spring:message code="game.page.to"/>: ${game.endPage.title}</div>
+<a href="<c:url value="/game"/>"><spring:message code="game.start"/></a>
 </body>
 </html>
