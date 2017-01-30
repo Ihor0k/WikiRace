@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import ua.ihor0k.model.User;
 
 @Service
 @Slf4j
@@ -16,12 +17,12 @@ public class SecurityServiceImpl implements SecurityService {
     private UserDetailsService userDetailsService;
 
     @Override
-    public String findLoggedInUsername() {
-        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if (userDetails instanceof UserDetails) {
-            String username = ((UserDetails) userDetails).getUsername();
-            log.info("{}", username);
-            return username;
+    public User findLoggedInUser() {
+        Object userObject = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        if (userObject instanceof User) {
+            User user = (User) userObject;
+            log.info("{}", user.getUsername());
+            return user;
         }
         return null;
     }
@@ -31,7 +32,7 @@ public class SecurityServiceImpl implements SecurityService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken upat = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
         authenticationManager.authenticate(upat);
-        if(upat.isAuthenticated()) {
+        if (upat.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(upat);
             log.info("{}", username);
         }

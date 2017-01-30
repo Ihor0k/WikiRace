@@ -1,7 +1,9 @@
 package ua.ihor0k.service;
 
+import ua.ihor0k.model.User;
+
 public interface SecurityService {
-    String findLoggedInUsername();
+    User findLoggedInUser();
 
     void autologin(String username, String password);
 }
