@@ -34,6 +34,10 @@ public class Page {
     @Column(name = "description", nullable = false)
     private String description;
 
+    public Page(String title) {
+        this.title = title;
+    }
+
     public Page(String title, String url, String pageName) {
         this.title = title;
         this.url = url;
@@ -52,7 +56,8 @@ public class Page {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Page page = (Page) o;
-        return title.equals(page.title) && url.equals(page.url);
+        if (!title.equals(page.title)) return false;
+        return url != null ? url.equals(page.url) : page.url == null;
     }
 
     @Override
