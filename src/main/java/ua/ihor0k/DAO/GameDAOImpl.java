@@ -1,6 +1,5 @@
 package ua.ihor0k.DAO;
 
-import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +28,18 @@ public class GameDAOImpl implements GameDAO {
     @Override
     public List<Game> getAllGames() {
         Session session = sessionFactory.getCurrentSession();
-        List<Game> list = session
+        return session
                 .createQuery("from Game ", Game.class)
                 .list();
-        return list;
     }
 
     @Override
     public List<Game> getGamesByUser(User user) {
         Session session = sessionFactory.getCurrentSession();
-        List<Game> list = session
-                .createQuery("from Game where user = :userId", Game.class)
+        return session
+                .createQuery("from Game where user.id = :userId", Game.class)
                 .setParameter("userId", user.getId())
                 .list();
-        return list;
     }
 
     @Autowired

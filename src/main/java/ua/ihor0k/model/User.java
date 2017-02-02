@@ -1,12 +1,11 @@
 package ua.ihor0k.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -16,21 +15,38 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User implements UserDetails{
+@EqualsAndHashCode(of = {"username", "games"})
+public class User implements UserDetails {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @OrderBy("id")
-    private List<Game> games;
+    private List<Game> games = new ArrayList<>();
+
+    public User(String username, String password, List<Game> games) {
+        this.username = username;
+        this.password = password;
+        this.games = games;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public void addGame(Game game) {
+        game.setUser(this);
+        games.add(game);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ua.ihor0k.model.User;
 import ua.ihor0k.util.StringListConverter;
 
 import javax.persistence.*;
@@ -37,7 +36,7 @@ public class Game {
     @Transient
     private boolean isFinished;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
 
