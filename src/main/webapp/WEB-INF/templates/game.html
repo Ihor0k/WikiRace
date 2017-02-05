@@ -28,8 +28,8 @@
         </div>
     </div>
     <div id="authorization">
-        <a id="sign-up" class="button" th:text="#{auth.signup}">Регистрация</a>
-        <a id="log-in" class="button" th:text="#{auth.login}">Вход</a>
+        <a id="sign-up" href="/registration" th:href="@{/registration}" class="button" th:text="#{auth.signup}">Регистрация</a>
+        <a id="log-in" href="/login" th:href="@{/login}" class="button" th:text="#{auth.login}">Вход</a>
     </div>
 </div>
 <div id="wiki-wrapper">
