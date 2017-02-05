@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WikiRace</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/main.css" th:href="@{~/resources/css/main.css}">
+</head>
+<body>
+<th:block th:text="${user != null} ? ${user.username}">Пользователь</th:block>
+<div id="from" th:text="|#{game.page.from}: ${game.startPage.title}|">Старт: Киев</div>
+<div id="to" th:text="|#{game.page.to}: ${game.endPage.title}|">Цель: Львов</div>
+<a th:href="@{/game}" th:text="#{game.start}">Начать</a>
+</body>
+</html>

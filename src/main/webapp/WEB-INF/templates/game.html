@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WikiRace</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/main.css" th:href="@{~/resources/css/main.css}">
+</head>
+<body>
+<div id="header">
+    <div id="logo">
+        <div id="temp" style="width: 150px; height: 50px"></div>
+    </div>
+    <div id="surrender-wrapper">
+        <a class="button" th:href="@{/game/new}" th:text="#{game.surrender}">Сдаться</a>
+    </div>
+    <div id="game-info">
+        <div id="goal-wrapper">
+            <span th:text="|#{game.page.to}: |">Цель: </span>
+            <a id="goal" th:href="${game.endPage.url}" th:target="_blank" href="https://ru.wikipedia.org/wiki/Львов"
+               target="_blank" th:text="${game.endPage.title}">Львов</a>
+            <div id="popup" th:text="${game.endPage.description}"></div>
+        </div>
+        <div id="clicks-count-wrapper">
+            <div class="right">
+                <span th:text="|#{game.clicks}: |">Переходы: </span>
+                <span id="clicks-count" th:text="${game.pages.size() <= 1 ? 0 : game.pages.size() - 1}">0</span>
+            </div>
+        </div>
+    </div>
+    <div id="authorization">
+        <a id="sign-up" class="button" th:text="#{auth.signup}">Регистрация</a>
+        <a id="log-in" class="button" th:text="#{auth.login}">Вход</a>
+    </div>
+</div>
+<div id="wiki-wrapper">
+    <iframe id="wiki"
+            th:src="'/wiki/' + (${#lists.isEmpty(game.pages)} ? ${game.startPage.pageName} : ${game.pages.peekLast().pageName})"
+            src="https://ru.wikipedia.org/wiki/Киев"></iframe>
+</div>
+<script type="text/javascript" src="../../resources/js/main.js" th:src="@{/resources/js/main.js}"></script>
+</body>
+</html>
