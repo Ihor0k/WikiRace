@@ -6,15 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.ihor0k.manager.GameManager;
+import ua.ihor0k.service.SecurityService;
 
 @Controller
 public class GameController {
     private GameManager gameManager;
+    private SecurityService securityService;
 
     @RequestMapping(value = "/")
     public String main(Model model) {
         model.addAttribute("game", gameManager.getGame());
-        return "main";
+        model.addAttribute("user", securityService.getLoggedInUser());
+        return "index";
     }
 
     @RequestMapping(value = "/game")
@@ -28,22 +31,22 @@ public class GameController {
         gameManager.addPage(pageName);
         if (gameManager.isFinished()) {
             model.addAttribute("game", gameManager.getGame());
+            gameManager.stopGame();
             return "results";
         }
         model.addAttribute("page", gameManager.getLastPage());
         return "wiki";
     }
 
-    @RequestMapping(value = "/game/stop")
-    public String stopGame() {
-        gameManager.stopGame();
-        return "redirect:/";
-    }
-
     @RequestMapping(value = "/game/new")
     public String newGame(Model model) {
         gameManager.stopGame();
         return game(model);
+    }
+
+    @Autowired
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
     }
 
     @Autowired

@@ -7,12 +7,18 @@ import org.springframework.web.context.annotation.SessionScope;
 import ua.ihor0k.api.ApiWorker;
 import ua.ihor0k.model.Game;
 import ua.ihor0k.model.Page;
+import ua.ihor0k.model.User;
+import ua.ihor0k.service.SecurityService;
+import ua.ihor0k.service.UserService;
 
 @Slf4j
 @Service
 @SessionScope
 public class GameManager {
     private ApiWorker apiWorker;
+    private UserService userService;
+    private SecurityService securityService;
+
     private Game game;
 
     public boolean isFinished() {
@@ -54,6 +60,13 @@ public class GameManager {
 
     public void stopGame() {
         log.info("Game: {}.", game);
+        if (isFinished()) {
+            User user = securityService.getLoggedInUser();
+            if (user != null) {
+                user.addGame(game);
+                userService.updateUser(user);
+            }
+        }
         game = null;
     }
 
@@ -65,6 +78,16 @@ public class GameManager {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    @Autowired
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @Autowired

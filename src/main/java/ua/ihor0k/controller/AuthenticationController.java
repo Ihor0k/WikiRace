@@ -18,12 +18,9 @@ public class AuthenticationController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error) {
         if (error != null)
-            return "registration";
-        model.addAttribute("error", "login.fail");
-        if (logout != null)
-            model.addAttribute("message", "logout.success");
+            model.addAttribute("error", "login.fail");
         return "login";
     }
 
