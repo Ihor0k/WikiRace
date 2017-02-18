@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ua.ihor0k.manager.GameManager;
 import ua.ihor0k.service.SecurityService;
 
@@ -21,8 +22,13 @@ public class GameController {
     }
 
     @RequestMapping(value = "/game")
-    public String game(Model model) {
+    public String game(Model model, @RequestParam(value = "action", required = false) String action) {
         model.addAttribute("game", gameManager.getGame());
+        if (action != null)
+            if (action.equals("stop")) {
+                gameManager.stopGame();
+                return "redirect:/";
+            } else return "redirect:/game";
         return "game";
     }
 
@@ -36,12 +42,6 @@ public class GameController {
         }
         model.addAttribute("page", gameManager.getLastPage());
         return "wiki";
-    }
-
-    @RequestMapping(value = "/game/new")
-    public String newGame(Model model) {
-        gameManager.stopGame();
-        return game(model);
     }
 
     @Autowired

@@ -11,7 +11,7 @@
         <div id="temp" style="width: 150px; height: 50px"></div>
     </div>
     <div id="surrender-wrapper">
-        <a class="button" th:href="@{/game/new}" th:text="#{game.surrender}">Сдаться</a>
+        <a class="button" th:href="@{/game(action=stop)}" th:text="#{game.surrender}">Сдаться</a>
     </div>
     <div id="game-info">
         <div id="goal-wrapper">

@@ -22,10 +22,7 @@ public class GameManager {
     private Game game;
 
     public boolean isFinished() {
-        boolean result = game.isFinished();
-        if (result)
-            log.info("Game: {}. Clicks: {}.", game, game.getPages().size() - 1);
-        return result;
+        return game == null || game.isFinished();
     }
 
     public void addPage(String pageName) {
@@ -59,14 +56,15 @@ public class GameManager {
     }
 
     public void stopGame() {
-        log.info("Game: {}.", game);
         if (isFinished()) {
+            log.info("Game: {} is finished. Clicks: {}.", game, game.getPages().size() - 1);
             User user = securityService.getLoggedInUser();
             if (user != null) {
                 user.addGame(game);
                 userService.updateUser(user);
             }
-        }
+        } else
+            log.info("Game: {} is stopped.", game);
         game = null;
     }
 

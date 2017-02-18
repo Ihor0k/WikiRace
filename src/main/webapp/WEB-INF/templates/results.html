@@ -18,7 +18,7 @@
     <span class="page-title" th:each="page : ${game.pages}" th:text="${page.title}"></span>
 </div>
 <span th:text="|#{game.clicks}: ${game.pages.size()-1}|"></span>
-<a href="/game/new" th:href="@{/game/new}">Start new game</a>
+<a href="/game" th:href="@{/game}">Start new game</a>
 <script type="text/javascript">
     if (inIframe()) {
         window.top.document.documentElement.innerHTML = window.document.documentElement.innerHTML;
