@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{auth.signup}"></title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/main.css" th:href="@{~/resources/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
 <form id="form-sign-up" action="#" th:action="@{/registration}" th:object="${user}" method="post">

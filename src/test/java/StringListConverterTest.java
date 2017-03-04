@@ -1,4 +1,4 @@
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import ua.ihor0k.model.Page;
 import ua.ihor0k.util.StringListConverter;

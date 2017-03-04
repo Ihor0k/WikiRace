@@ -6,6 +6,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import ua.ihor0k.config.ApplicationConfig;
 import ua.ihor0k.model.Game;
 import ua.ihor0k.model.Page;
 import ua.ihor0k.model.User;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-context.xml", "classpath:spring-security.xml", "classpath:hibernate.cfg.xml"})
+@ContextConfiguration(classes = ApplicationConfig.class)
 public class DatabaseTest {
     private UserService userService;
     private GameService gameService;
@@ -92,7 +93,7 @@ public class DatabaseTest {
                 new Page("title" + r.nextInt(10), "url" + r.nextInt(10),
                         "pageName" + r.nextInt(10), "description" + r.nextInt(10)))
                 .collect(Collectors.toList());
-        return new Game(0, pages.get(0), pages.get(4), new LinkedList(pages), true, null);
+        return new Game(0, pages.get(0), pages.get(4), new LinkedList<Page>(pages), true, null);
     }
 
     @Autowired

@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{auth.login}"></title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/main.css" th:href="@{~/resources/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
 <form id="form-sign-in" action="#" th:action="@{/login}" method="post">
     <span class="form-header" th:text="#{auth.login}">Вход</span>
     <input name="username" th:placeholder="#{auth.username}" autofocus="autofocus"/>
     <input name="password" th:placeholder="#{auth.password}" type="password"/>
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <button class="button" type="submit" th:text="#{auth.login}">Вход</button>
     <a th:href="@{/registration}" href="/registration" th:text="#{auth.signup}">Регистрация</a>
 </form>
