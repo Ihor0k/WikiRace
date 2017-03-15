@@ -10,6 +10,7 @@ import ua.ihor0k.model.Page;
 import ua.ihor0k.model.User;
 import ua.ihor0k.service.SecurityService;
 import ua.ihor0k.service.UserService;
+import ua.ihor0k.util.GamePool;
 
 @Slf4j
 @Service
@@ -18,6 +19,7 @@ public class GameManager {
     private ApiWorker apiWorker;
     private UserService userService;
     private SecurityService securityService;
+    private GamePool gamePool;
 
     private Game game;
 
@@ -48,13 +50,6 @@ public class GameManager {
         return game.getPages().peekLast();
     }
 
-    private void newGame() {
-        Page startPage = apiWorker.getRandomPage();
-        Page endPage = apiWorker.getRandomPage();
-        game = new Game(startPage, endPage);
-        log.info("Game: {}. From: {} To: {}.", game, startPage.getTitle(), endPage.getTitle());
-    }
-
     public void stopGame() {
         if (isFinished()) {
             log.info("Game: {} is finished. Clicks: {}.", game, game.getPages().size() - 1);
@@ -69,8 +64,10 @@ public class GameManager {
     }
 
     public Game getGame() {
-        if (game == null)
-            newGame();
+        if (game == null) {
+            game = gamePool.getGame();
+            log.info("Game: {}. From: {} To: {}.", game, game.getStartPage().getTitle(), game.getEndPage().getTitle());
+        }
         return game;
     }
 
@@ -91,5 +88,10 @@ public class GameManager {
     @Autowired
     public void setApiWorker(ApiWorker apiWorker) {
         this.apiWorker = apiWorker;
+    }
+
+    @Autowired
+    public void setGamePool(GamePool gamePool) {
+        this.gamePool = gamePool;
     }
 }
