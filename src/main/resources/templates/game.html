@@ -37,6 +37,6 @@
             th:src="'/wiki/' + (${#lists.isEmpty(game.pages)} ? ${game.startPage.pageName} : ${game.pages.peekLast().pageName})"
             src="https://ru.wikipedia.org/wiki/Киев"></iframe>
 </div>
-<script type="text/javascript" src="../../resources/js/main.js" th:src="@{/resources/js/main.js}"></script>
+<script type="text/javascript" src="../static/js/main.js" th:src="@{/js/main.js}"></script>
 </body>
 </html>
