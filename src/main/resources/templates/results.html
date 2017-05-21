@@ -3,18 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
-    <style type="text/css">
-        .page-title:last-child, .page-title:first-child {
-            font-weight: bold;
-        }
-
-        .page-title:not(:last-child):after {
-            content: ' → ';
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
-<div id="pages-wrapper">
+<div class="game-pages">
     <span class="page-title" th:each="page : ${game.pages}" th:text="${page.title}"></span>
 </div>
 <span th:text="|#{game.clicks}: ${game.pages.size()-1}|"></span>

@@ -94,6 +94,29 @@
     height: 100%;
 }
 
+.games-list {
+    width: 60%;
+}
+
+.games-list-item {
+    padding: 5px;
+    border-radius : 3px;
+    background-color: #fafafa;
+    border: 1px solid #bbbbbb;
+}
+
+.game-pages {
+    font-size: 14px;
+}
+
+.game-pages .page-title:last-child, .game-pages .page-title:first-child {
+    font-weight: bold;
+}
+
+.game-pages .page-title:not(:last-child):after {
+    content: ' → ';
+}
+
 a {
     font-weight: normal;
     color: #2ab7ca;
