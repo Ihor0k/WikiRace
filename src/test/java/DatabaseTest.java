@@ -75,7 +75,7 @@ public class DatabaseTest {
     @Test
     @Rollback
     @Transactional
-    public void gamesWithOneUser() {
+    public void gamesWithTheSameUser() {
         User user = new User("username", "password");
 
         List<Game> games = Arrays.asList(buildGame(), buildGame(), buildGame());
