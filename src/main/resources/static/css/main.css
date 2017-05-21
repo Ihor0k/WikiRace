@@ -1,3 +1,7 @@
+.center {
+    text-align: center;
+}
+
 #header {
     color: #fff;
     height: 50px;
@@ -54,10 +58,22 @@
     margin: auto;
 }
 
+#from-to-wrapper {
+    margin: 10px;
+}
+
+.big-button {
+    font-size: 24px;
+    margin: 10px 10px;
+    padding: 20px;
+}
+
 .button {
-    border-radius: 25px;
+    border-radius: 5px;
     background-color: #fed766;
-    padding: 5px 10px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    user-select: none;
 }
 
 .button:hover {
@@ -88,7 +104,17 @@ a:not(.button):hover {
     text-decoration: underline;
 }
 
+input[type="button"], input[type="submit"] {
+    outline: none;
+    font-size: inherit;
+    border: none;
+    font-weight: normal;
+    color: #2ab7ca;
+}
+
 body {
     margin: 0;
     position: relative;
+    font-family: 'Open sans', sans-serif;
+    font-size: 20px;
 }

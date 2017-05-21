@@ -7,10 +7,9 @@
 </head>
 <body>
 <form id="form-sign-in" action="#" th:action="@{/login}" method="post">
-    <span class="form-header" th:text="#{auth.login}">Вход</span>
     <input name="username" th:placeholder="#{auth.username}" autofocus="autofocus"/>
     <input name="password" th:placeholder="#{auth.password}" type="password"/>
-    <button class="button" type="submit" th:text="#{auth.login}">Вход</button>
+    <input class="button" type="submit" value="Вход" th:value="#{auth.login}"/>
     <a th:href="@{/registration}" href="/registration" th:text="#{auth.signup}">Регистрация</a>
 </form>
 </body>
