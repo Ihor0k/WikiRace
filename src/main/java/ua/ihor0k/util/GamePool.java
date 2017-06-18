@@ -25,13 +25,11 @@ public class GamePool {
 
     @SneakyThrows(InterruptedException.class)
     public Game getGame(){
-        Game game = pool.take();
-        addGame();
-        return game;
+        return pool.take();
     }
 
     @Async
-    private void addGame() {
+    public void addGame() {
         Page startPage = apiWorker.getRandomPage();
         Page endPage = apiWorker.getRandomPage();
         pool.offer(new Game(startPage, endPage));

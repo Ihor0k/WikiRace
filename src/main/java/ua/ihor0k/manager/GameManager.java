@@ -66,6 +66,7 @@ public class GameManager {
     public Game getGame() {
         if (game == null) {
             game = gamePool.getGame();
+            gamePool.addGame();
             log.info("Game: {}. From: {} To: {}.", game, game.getStartPage().getTitle(), game.getEndPage().getTitle());
         }
         return game;
