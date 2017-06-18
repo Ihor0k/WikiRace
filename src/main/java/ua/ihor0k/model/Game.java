@@ -72,6 +72,13 @@ public class Game {
         return result;
     }
 
+    public Game makeCopy() {
+        return new Game(
+                new Page(startPage.getTitle(), startPage.getUrl(), startPage.getPageName(), startPage.getDescription()),
+                new Page(endPage.getTitle(), endPage.getUrl(), endPage.getPageName(), endPage.getDescription())
+        );
+    }
+
     @Override
     public String toString() {
         return Integer.toHexString(hashCode()).toUpperCase();

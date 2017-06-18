@@ -29,6 +29,12 @@ public class GameController {
         return "game";
     }
 
+    @RequestMapping(value = "/game/{id}")
+    public String gameById(Model model, @PathVariable("id") int id) {
+        model.addAttribute("game", gameManager.getGameById(id));
+        return "game";
+    }
+
     @RequestMapping(value = "/wiki/{pageName:.+}")
     public String wiki(@PathVariable("pageName") String pageName, Model model) {
         gameManager.addPage(pageName);

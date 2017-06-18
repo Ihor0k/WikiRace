@@ -82,6 +82,14 @@
     padding: 20px;
 }
 
+.game-pages, .game-start-end-pages {
+    margin-bottom: 10px;
+}
+
+.button-play {
+    margin: 0;
+}
+
 .button {
     border-radius: 5px;
     background-color: #ef6c00;
@@ -110,11 +118,14 @@
 }
 
 .games-list {
+    display: inline-block;
+    margin: 10px;
     width: 60%;
 }
 
 .games-list-item {
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
     border-radius : 3px;
     background-color: #fafafa;
     border: 1px solid #bbbbbb;

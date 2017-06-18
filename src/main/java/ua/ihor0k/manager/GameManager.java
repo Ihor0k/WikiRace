@@ -8,6 +8,7 @@ import ua.ihor0k.api.ApiWorker;
 import ua.ihor0k.model.Game;
 import ua.ihor0k.model.Page;
 import ua.ihor0k.model.User;
+import ua.ihor0k.service.GameService;
 import ua.ihor0k.service.SecurityService;
 import ua.ihor0k.service.UserService;
 import ua.ihor0k.util.GamePool;
@@ -20,6 +21,7 @@ public class GameManager {
     private UserService userService;
     private SecurityService securityService;
     private GamePool gamePool;
+    private GameService gameService;
 
     private Game game;
 
@@ -72,6 +74,12 @@ public class GameManager {
         return game;
     }
 
+    public Game getGameById(int id) {
+        game = gameService.getGame(id).makeCopy();
+        log.info("Game: {}. From: {} To: {}.", game, game.getStartPage().getTitle(), game.getEndPage().getTitle());
+        return game;
+    }
+
     public void setGame(Game game) {
         this.game = game;
     }
@@ -94,5 +102,10 @@ public class GameManager {
     @Autowired
     public void setGamePool(GamePool gamePool) {
         this.gamePool = gamePool;
+    }
+
+    @Autowired
+    public void setGameService(GameService gameService) {
+        this.gameService = gameService;
     }
 }
