@@ -10,7 +10,7 @@
     <input name="username" th:placeholder="#{auth.username}" autofocus="autofocus"/>
     <input name="password" th:placeholder="#{auth.password}" type="password"/>
     <input class="button" type="submit" value="Вход" th:value="#{auth.login}"/>
-    <a th:href="@{/registration}" href="/registration" th:text="#{auth.signup}">Регистрация</a>
+    <span class="error" th:if="${error}" th:text="#{auth.login.fail}">Ошибка авторизации</span>
 </form>
 </body>
 </html>

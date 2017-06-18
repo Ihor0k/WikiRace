@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
-<h2 class="user-name" th:text="${user.username}">Admin</h2>
+<h2 class="username" th:text="${user.username}">Admin</h2>
 <div class="games-list">
     <div class="games-list-item" th:each="game : ${user.games}">
         <div class="game-start-end-pages" th:text="${game.startPage.title} + ' — ' + ${game.endPage.title}"></div>

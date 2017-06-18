@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>WikiRace</title>
@@ -27,9 +27,13 @@
             </div>
         </div>
     </div>
-    <div id="authorization">
-        <a id="sign-up" href="/registration" th:href="@{/registration}" class="button" th:text="#{auth.signup}">Регистрация</a>
-        <a id="log-in" href="/login" th:href="@{/login}" class="button" th:text="#{auth.login}">Вход</a>
+    <div class="authorization" sec:authorize="authenticated">
+        <a class="username" sec:authentication="name" th:href="@{/user/__${#authentication.name}__}">Пользователь</a>
+        <a class="logout button" href="/logout" th:href="@{/logout}">Выход</a>
+    </div>
+    <div class="authorization" sec:authorize="anonymous">
+        <a class="signup button" href="/registration" th:href="@{/registration}" th:text="#{auth.signup}">Регистрация</a>
+        <a class="login button" href="/login" th:href="@{/login}" th:text="#{auth.login}">Вход</a>
     </div>
 </div>
 <div id="wiki-wrapper">

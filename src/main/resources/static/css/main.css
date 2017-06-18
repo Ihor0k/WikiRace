@@ -1,3 +1,8 @@
+.error {
+    color: #f44336;
+    font-size: 14px;
+}
+
 .center {
     text-align: center;
 }
@@ -11,7 +16,7 @@
     display: flex;
 }
 
-#logo {
+.logo {
     margin: auto;
 }
 
@@ -54,8 +59,17 @@
     z-index: 1;
 }
 
-#authorization {
+.authorization {
     margin: auto;
+}
+
+.username {
+    margin: auto;
+    font-size: 24px;
+}
+
+#from, #to {
+    margin: 5px;
 }
 
 #from-to-wrapper {
@@ -70,7 +84,7 @@
 
 .button {
     border-radius: 5px;
-    background-color: #fed766;
+    background-color: #ef6c00;
     padding: 5px 15px;
     text-transform: uppercase;
     user-select: none;
@@ -78,7 +92,8 @@
 
 .button:hover {
     cursor: pointer;
-    background-color: #fede81;
+    color: #000;
+    background-color: #fb8c00;
 }
 
 #wiki-wrapper {
@@ -118,8 +133,9 @@
 }
 
 a {
+    margin: auto 10px;
     font-weight: normal;
-    color: #2ab7ca;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -132,7 +148,7 @@ input[type="button"], input[type="submit"] {
     font-size: inherit;
     border: none;
     font-weight: normal;
-    color: #2ab7ca;
+    color: #fff;
 }
 
 body {

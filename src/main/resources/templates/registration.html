@@ -7,11 +7,10 @@
 </head>
 <body>
 <form id="form-sign-up" action="#" th:action="@{/registration}" th:object="${user}" method="post">
-    <span class="form-header" th:text="#{auth.signup}"></span>
     <input th:field="*{username}" th:placeholder="#{auth.username}" autofocus="autofocus"/>
-    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+    <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
     <input th:field="*{password}" th:placeholder="#{auth.password}" type="password"/>
-    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
     <button class="button" type="submit" th:text="#{auth.signup}">Регистрация</button>
     <a href="/login" th:href="@{/login}" th:text="#{auth.login}">Вход</a>
 </form>

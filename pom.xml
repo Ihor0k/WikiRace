@@ -47,6 +47,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--Thymeleaf-->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>3.0.2.RELEASE</version>
+        </dependency>
+
         <!--JUnit-->
         <dependency>
             <groupId>junit</groupId>
