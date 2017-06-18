@@ -7,15 +7,45 @@
 </head>
 <body>
 <div class="center">
-    <h2 class="username" th:text="${user.username}">Admin</h2>
-    <div class="games-list">
-        <div class="games-list-item" th:each="game : ${user.games}">
+    <h2 class="username" th:text="${user.username}">Пользователь</h2>
+    <div class="games-list" th:remove="all-but-first">
+        <!--/*/
+        <div class="block games-list-item" th:each="game : ${user.games}">
             <div class="game-start-end-pages" th:text="${game.startPage.title} + ' — ' + ${game.endPage.title}"></div>
             <div class="game-pages">
                 <span class="page-title" th:each="page : ${game.pages}" th:text="${page.title}"></span>
             </div>
             <a class="button button-play" th:href="@{/game/__${game.id}__}" th:text="#{game.play}">Играть</a>
         </div>
+        /*/-->
+        <div class="block games-list-item">
+            <div class="game-start-end-pages">Коллекционер (Marvel Comics) — Гауди (значения)</div>
+            <div class="game-pages">
+                <span class="page-title">Коллекционер (Marvel Comics)</span>
+                <span class="page-title">Стэн Ли</span>
+                <span class="page-title">Соединённые Штаты Америки</span>
+                <span class="page-title">Украина</span>
+                <span class="page-title">Черкассы</span>
+                <span class="page-title">Гауди, Антонио</span>
+                <span class="page-title">Гауди (значения)</span>
+            </div>
+            <a class="button button-play">Играть</a>
+        </div>
+        <div class="block games-list-item">
+            <div class="game-start-end-pages">Внешняя торговля Грузии — Myrmica ereptrix</div>
+            <div class="game-pages">
+                <span class="page-title">Внешняя торговля Грузии</span>
+                <span class="page-title">Грузия</span>
+                <span class="page-title">Фауна Грузии</span>
+                <span class="page-title">Список видов муравьёв Грузии</span>
+                <span class="page-title">Рыжая мирмика</span>
+                <span class="page-title">Мирмицины</span>
+                <span class="page-title">Мирмики</span>
+                <span class="page-title">Myrmica ereptrix</span>
+            </div>
+            <a class="button button-play">Играть</a>
+        </div>
+
     </div>
 </div>
 </body>

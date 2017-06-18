@@ -6,11 +6,15 @@
     <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
 </head>
 <body>
-<form id="form-sign-in" action="#" th:action="@{/login}" method="post">
-    <input name="username" th:placeholder="#{auth.username}" autofocus="autofocus"/>
-    <input name="password" th:placeholder="#{auth.password}" type="password"/>
-    <input class="button" type="submit" value="Вход" th:value="#{auth.login}"/>
-    <span class="error" th:if="${error}" th:text="#{auth.login.fail}">Ошибка авторизации</span>
-</form>
+<div class="center">
+    <div class="block form">
+        <form action="#" th:action="@{/login}" method="post">
+            <input name="username" placeholder="Логин" th:placeholder="#{auth.username}" autofocus="autofocus"/>
+            <input name="password" placeholder="Пароль" th:placeholder="#{auth.password}" type="password"/>
+            <p class="error" th:if="${error}" th:text="#{auth.login.fail}">Ошибка авторизации</p>
+            <input class="button" type="submit" value="Вход" th:value="#{auth.login}"/>
+        </form>
+    </div>
+</div>
 </body>
 </html>

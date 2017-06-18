@@ -1,3 +1,39 @@
+img {
+    user-select: none;
+}
+
+.block {
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form {
+    width: 360px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+form {
+    margin: 20px auto;
+}
+
+form .error {
+    font-size: 12px;
+}
+
+form input {
+    width: 80%;
+    background-color: #e0e0e0;
+    margin: 5px auto;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
 .error {
     color: #f44336;
     font-size: 14px;
@@ -17,6 +53,7 @@
 }
 
 .logo {
+    user-select: none;
     margin: auto;
 }
 
@@ -68,7 +105,15 @@
     font-size: 24px;
 }
 
-#from, #to {
+.from {
+    color: #0d47a1;
+}
+
+.to {
+    color: #b71c1c
+}
+
+.from, .to {
     margin: 5px;
 }
 
@@ -92,16 +137,13 @@
 
 .button {
     border-radius: 5px;
-    background-color: #ef6c00;
+    background-color: #fb8c00;
     padding: 5px 15px;
-    text-transform: uppercase;
-    user-select: none;
 }
 
 .button:hover {
     cursor: pointer;
     color: #000;
-    background-color: #fb8c00;
 }
 
 #wiki-wrapper {
@@ -126,7 +168,7 @@
 .games-list-item {
     margin: 10px;
     padding: 10px;
-    border-radius : 3px;
+    border-radius: 3px;
     background-color: #fafafa;
     border: 1px solid #bbbbbb;
 }
@@ -167,4 +209,6 @@ body {
     position: relative;
     font-family: 'Open sans', sans-serif;
     font-size: 20px;
+
+    background: linear-gradient(to left, #FFECB3, #FFE082);
 }

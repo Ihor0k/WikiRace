@@ -7,20 +7,29 @@
 </head>
 <body>
 <div id="header">
+    <!--/*/
     <div class="authorization" sec:authorize="authenticated">
         <a class="username" sec:authentication="name" th:href="@{/user/__${#authentication.name}__}">Пользователь</a>
         <a class="logout button" href="/logout" th:href="@{/logout}">Выход</a>
     </div>
+    /*/-->
     <div class="authorization" sec:authorize="anonymous">
-        <a class="signup button" href="/registration" th:href="@{/registration}" th:text="#{auth.signup}">Регистрация</a>
+        <a class="signup button" href="/registration" th:href="@{/registration}"
+           th:text="#{auth.signup}">Регистрация</a>
         <a class="login button" href="/login" th:href="@{/login}" th:text="#{auth.login}">Вход</a>
     </div>
 </div>
 <div class="center">
     <img class="logo logo-main" src="../static/images/logo.png" th:src="@{/images/logo.png}" width="500" height="131"/>
     <div id="from-to-wrapper">
-        <div id="from" th:text="|#{game.page.from}: ${game.startPage.title}|">Старт: Киев</div>
-        <div id="to" th:text="|#{game.page.to}: ${game.endPage.title}|">Цель: Львов</div>
+        <div>
+            <span th:text="|#{game.page.from}: |">Старт: </span>
+            <span class="from" th:text="${game.startPage.title}">Киев</span>
+        </div>
+        <div>
+            <span th:text="|#{game.page.to}: |">Цель: </span>
+            <span class="to" th:text="${game.endPage.title}">Львов</span>
+        </div>
     </div>
     <a class="big-button button" th:href="@{/game}" th:text="#{game.start}">Начать</a>
 </div>
