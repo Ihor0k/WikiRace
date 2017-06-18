@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ua.ihor0k.model.User;
 import ua.ihor0k.service.SecurityService;
 import ua.ihor0k.service.UserService;
@@ -18,9 +19,9 @@ public class AuthenticationController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error) {
-        if (error != null)
-            model.addAttribute("error", "login.fail");
+    public String login(Model model,
+            @RequestParam(value = "error", required = false) String error) {
+        model.addAttribute("error", error != null);
         return "login";
     }
 

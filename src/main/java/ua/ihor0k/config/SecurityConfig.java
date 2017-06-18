@@ -13,15 +13,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.headers().frameOptions().sameOrigin()
-                .and().formLogin().loginPage("/login")
-                .successForwardUrl("/").failureForwardUrl("/login?error")
-                .usernameParameter("username").passwordParameter("password")
-                .and().logout().logoutUrl("/login?logout")
-                .and().csrf().disable();
+        http.headers().frameOptions().sameOrigin();
+        http.formLogin()
+                .defaultSuccessUrl("/")
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password");
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+        http.csrf().disable();
     }
 
     @Autowired

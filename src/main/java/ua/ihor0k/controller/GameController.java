@@ -7,17 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.ihor0k.manager.GameManager;
-import ua.ihor0k.service.SecurityService;
 
 @Controller
 public class GameController {
     private GameManager gameManager;
-    private SecurityService securityService;
 
     @RequestMapping(value = "/")
     public String main(Model model) {
         model.addAttribute("game", gameManager.getGame());
-        model.addAttribute("user", securityService.getLoggedInUser());
         return "index";
     }
 
@@ -42,11 +39,6 @@ public class GameController {
         }
         model.addAttribute("page", gameManager.getLastPage());
         return "wiki";
-    }
-
-    @Autowired
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
     }
 
     @Autowired
