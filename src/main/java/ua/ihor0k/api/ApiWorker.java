@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 
 @Service
@@ -81,7 +82,7 @@ public class ApiWorker {
         try {
             URL url = new URL(URL + urn);
             URLConnection conn = url.openConnection();
-            return new InputStreamReader(conn.getInputStream(), "UTF-8");
+            return new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

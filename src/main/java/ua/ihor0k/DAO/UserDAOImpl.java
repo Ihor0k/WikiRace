@@ -3,7 +3,6 @@ package ua.ihor0k.DAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import ua.ihor0k.model.User;
 
@@ -28,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
                     .setParameter("username", username)
                     .getSingleResult();
         } catch (NoResultException e) {
-            throw new UsernameNotFoundException("Username not found: " + username);
+            return null;
         }
     }
 

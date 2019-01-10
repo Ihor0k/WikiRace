@@ -39,6 +39,10 @@ public class Page implements Serializable {
         this.title = title;
     }
 
+    public Page(Page p) {
+        this(p.getTitle(), p.getUrl(), p.getPageName(), p.getDescription());
+    }
+
     public Page(String title, String url, String pageName) {
         this.title = title;
         this.url = url;

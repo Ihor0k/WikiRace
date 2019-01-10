@@ -16,7 +16,6 @@ import ua.ihor0k.service.UserService;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -44,7 +43,7 @@ public class DatabaseTest {
     @Transactional
     public void gameTest() {
         User user = new User("username", "password");
-        Game game = buildGame();
+        Game game = makeDummyGame();
         game.setUser(user);
 
         gameService.createGame(game);
@@ -63,14 +62,15 @@ public class DatabaseTest {
     public void userWithGamesTest() {
         User user = new User("username", "password");
 
-        List<Game> games = Arrays.asList(buildGame(), buildGame(), buildGame());
+        List<Game> games = Arrays.asList(makeDummyGame(), makeDummyGame(), makeDummyGame());
         games.forEach(user::addGame);
 
         userService.createUser(user);
 
         User newUser = (User) userService.loadUserByUsername("username");
 
-        Assert.assertEquals(user, newUser);}
+        Assert.assertEquals(user, newUser);
+    }
 
     @Test
     @Rollback
@@ -78,7 +78,7 @@ public class DatabaseTest {
     public void gamesWithTheSameUser() {
         User user = new User("username", "password");
 
-        List<Game> games = Arrays.asList(buildGame(), buildGame(), buildGame());
+        List<Game> games = Arrays.asList(makeDummyGame(), makeDummyGame(), makeDummyGame());
         games.forEach(game -> game.setUser(user));
         games.forEach(gameService::createGame);
 
@@ -87,13 +87,13 @@ public class DatabaseTest {
         Assert.assertEquals(games.get(0).getUser(), newUser);
     }
 
-    private Game buildGame() {
-        Random r = new Random();
-        List<Page> pages = IntStream.range(0, 5).boxed().map((n) ->
-                new Page("title" + r.nextInt(10), "url" + r.nextInt(10),
-                        "pageName" + r.nextInt(10), "description" + r.nextInt(10)))
-                .collect(Collectors.toList());
-        return new Game(0, pages.get(0), pages.get(4), new LinkedList<Page>(pages), true, null);
+    private Game makeDummyGame() {
+        List<Page> pages = IntStream.range(0, 5).boxed().map(this::makeDummyPage).collect(Collectors.toList());
+        return new Game(0, pages.get(0), pages.get(4), new LinkedList<>(pages), true, null);
+    }
+
+    private Page makeDummyPage(int n) {
+        return new Page("title" + n, "url" + n, "pageName" + n, "description" + n);
     }
 
     @Autowired

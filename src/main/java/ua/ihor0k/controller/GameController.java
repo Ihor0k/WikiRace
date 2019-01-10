@@ -21,11 +21,13 @@ public class GameController {
     @RequestMapping(value = "/game")
     public String game(Model model, @RequestParam(value = "action", required = false) String action) {
         model.addAttribute("game", gameManager.getGame());
-        if (action != null)
+        if (action != null) {
             if (action.equals("stop")) {
                 gameManager.stopGame();
                 return "redirect:/";
-            } else return "redirect:/game";
+            }
+            return "redirect:/game";
+        }
         return "game";
     }
 

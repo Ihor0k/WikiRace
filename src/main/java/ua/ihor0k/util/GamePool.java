@@ -10,17 +10,23 @@ import ua.ihor0k.model.Page;
 
 import javax.annotation.PostConstruct;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.stream.IntStream;
 
 @Component
 public class GamePool {
+    private final static int POOL_SIZE = 10;
+
     private ApiWorker apiWorker;
 
-    private LinkedBlockingQueue<Game> pool = new LinkedBlockingQueue<>(10);
+    private LinkedBlockingQueue<Game> pool;
+
+    public GamePool() {
+        pool = new LinkedBlockingQueue<>(POOL_SIZE);
+    }
 
     @PostConstruct
     private void init() {
-        for (int i = 0; i < 10; i++)
-            addGame();
+        IntStream.range(0, POOL_SIZE).parallel().forEach(__ -> addGame());
     }
 
     @SneakyThrows(InterruptedException.class)

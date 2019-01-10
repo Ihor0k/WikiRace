@@ -8,7 +8,7 @@
 <body>
 <div class="center">
     <h2 class="username" th:text="${user.username}">Пользователь</h2>
-    <div class="games-list" th:remove="all-but-first">
+    <div class="games-list">
         <!--/*/
         <div class="block games-list-item" th:each="game : ${user.games}">
             <div class="game-start-end-pages" th:text="${game.startPage.title} + ' — ' + ${game.endPage.title}"></div>
@@ -18,7 +18,7 @@
             <a class="button button-play" th:href="@{/game/__${game.id}__}" th:text="#{game.play}">Играть</a>
         </div>
         /*/-->
-        <div class="block games-list-item">
+        <div class="block games-list-item" th:remove="all">
             <div class="game-start-end-pages">Коллекционер (Marvel Comics) — Гауди (значения)</div>
             <div class="game-pages">
                 <span class="page-title">Коллекционер (Marvel Comics)</span>
@@ -31,7 +31,7 @@
             </div>
             <a class="button button-play">Играть</a>
         </div>
-        <div class="block games-list-item">
+        <div class="block games-list-item" th:remove="all">
             <div class="game-start-end-pages">Внешняя торговля Грузии — Myrmica ereptrix</div>
             <div class="game-pages">
                 <span class="page-title">Внешняя торговля Грузии</span>

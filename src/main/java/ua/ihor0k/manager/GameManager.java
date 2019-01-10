@@ -32,19 +32,21 @@ public class GameManager {
     public void addPage(String pageName) {
         Page page = getPage(pageName);
         game.addPage(page);
-        if (!game.isFinished() && page.getHtml() == null)
+        if (!game.isFinished() && page.getHtml() == null) {
             page.setHtml(apiWorker.getBodyHtml(pageName));
+        }
         log.info("Game: {}. Page: {}.", game, page.getTitle());
     }
 
     private Page getPage(String pageName) {
         Page page;
-        if (pageName.equals(game.getStartPage().getPageName()))
+        if (pageName.equals(game.getStartPage().getPageName())) {
             page = game.getStartPage();
-        else if (pageName.equals(game.getEndPage().getPageName()))
+        } else if (pageName.equals(game.getEndPage().getPageName())) {
             page = game.getEndPage();
-        else
+        } else {
             page = apiWorker.getPage(pageName);
+        }
         return page;
     }
 
@@ -60,8 +62,9 @@ public class GameManager {
                 user.addGame(game);
                 userService.updateUser(user);
             }
-        } else
+        } else {
             log.info("Game: {} is stopped.", game);
+        }
         game = null;
     }
 
@@ -75,7 +78,7 @@ public class GameManager {
     }
 
     public Game getGameById(int id) {
-        game = gameService.getGame(id).makeCopy();
+        game = new Game(gameService.getGame(id));
         log.info("Game: {}. From: {} To: {}.", game, game.getStartPage().getTitle(), game.getEndPage().getTitle());
         return game;
     }

@@ -31,7 +31,7 @@ public class Game {
 
     @Column(name = "pages_list")
     @Convert(converter = StringListConverter.class)
-    private LinkedList<Page> pages = new LinkedList<>();
+    private LinkedList<Page> pages;
 
     @Transient
     private boolean isFinished;
@@ -43,13 +43,19 @@ public class Game {
     public Game(Page startPage, Page endPage) {
         this.startPage = startPage;
         this.endPage = endPage;
+        this.pages = new LinkedList<>();
+    }
+
+    public Game(Game g) {
+        this(new Page(g.startPage), new Page(g.endPage));
     }
 
     public void addPage(Page page) {
         if (!page.equals(pages.peekLast())) {
             pages.add(page);
-            if (page.equals(endPage))
+            if (page.equals(endPage)) {
                 isFinished = true;
+            }
         }
     }
 
@@ -70,13 +76,6 @@ public class Game {
         int result = startPage.hashCode();
         result = 31 * result + endPage.hashCode();
         return result;
-    }
-
-    public Game makeCopy() {
-        return new Game(
-                new Page(startPage.getTitle(), startPage.getUrl(), startPage.getPageName(), startPage.getDescription()),
-                new Page(endPage.getTitle(), endPage.getUrl(), endPage.getPageName(), endPage.getDescription())
-        );
     }
 
     @Override

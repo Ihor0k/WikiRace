@@ -10,7 +10,7 @@
 <div class="center">
     <div class="games-list">
         <div class="block games-list-item">
-            <div class="game-start-end-pages">Внешняя торговля Грузии — Myrmica ereptrix</div>
+            <div class="game-start-end-pages" th:text="${game.startPage.title} + ' — ' + ${game.endPage.title}">Внешняя торговля Грузии — Myrmica ereptrix</div>
             <div class="game-pages" th:remove="all-but-first">
                 <!--/*/
                 <span class="page-title" th:each="page : ${game.pages}" th:text="${page.title}"></span>
@@ -25,7 +25,7 @@
                 <span class="page-title">Myrmica ereptrix</span>
             </div>
             <span th:text="|#{game.clicks}: ${game.pages.size()-1}|">Переходы: 7</span>
-            <a class="button" th:href="@{/game}">Новая игра</a>
+            <a class="button" th:text="#{game.playAgain}" th:href="@{/game}">Новая играа</a>
         </div>
     </div>
 </div>
@@ -33,6 +33,7 @@
     if (inIframe()) {
         window.top.document.documentElement.innerHTML = window.document.documentElement.innerHTML;
     }
+
     function inIframe() {
         try {
             return window.self !== window.top;

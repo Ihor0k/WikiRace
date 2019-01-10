@@ -28,6 +28,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDAO.getUser(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Username not found: " + username);
+        }
         log.info("Username {}", username);
         return user;
     }
